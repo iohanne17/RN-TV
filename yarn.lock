@@ -1407,6 +1407,13 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
+"@noriginmedia/norigin-spatial-navigation@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@noriginmedia/norigin-spatial-navigation/-/norigin-spatial-navigation-1.0.5.tgz#e2fbeab76291da19935df6821bafc6e657e26cbd"
+  integrity sha512-sLdigBBihZUtlexumYRrPkqg8P8SaSp+ZsLDEfDXdySP+/NK+uGCkRl7vi/GboTfDghdKt88KhwOa8sjvTuu5Q==
+  dependencies:
+    lodash "^4.17.21"
+
 "@react-native-community/cli-debugger-ui@^7.0.3":
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/@react-native-community/cli-debugger-ui/-/cli-debugger-ui-7.0.3.tgz#3eeeacc5a43513cbcae56e5e965d77726361bcb4"

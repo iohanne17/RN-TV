@@ -1,15 +1,17 @@
-import React from 'react';
-import {
-  SafeAreaView,
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  Platform,
-  Pressable,
-  Alert,
-} from 'react-native';
+import React, {useEffect} from 'react';
+import {SafeAreaView, View, StyleSheet, Platform, Alert} from 'react-native';
 import bladeImg from './assets/blade.jpg';
+import lxgImg from './assets/lxg.jpeg';
+import PressableButton from './src/components/TouchableButton';
+import {init} from '@noriginmedia/norigin-spatial-navigation';
+import {
+  useFocusable,
+  FocusContext,
+} from '@noriginmedia/norigin-spatial-navigation';
+
+init({
+  // options
+});
 
 const val = 300;
 const DATA = [
@@ -19,30 +21,49 @@ const DATA = [
       Platform.OS === 'web' ? {uri: bladeImg} : require('./assets/blade.jpg'),
   },
   {
-    name: 'League of Gentlemen',
-    image:
-      Platform.OS === 'web' ? {uri: bladeImg} : require('./assets/lxg.jpeg'),
+    name: 'League of Extraordinary Gentlemen',
+    image: Platform.OS === 'web' ? {uri: lxgImg} : require('./assets/lxg.jpeg'),
   },
 ];
 const App = () => {
+  const focusKey_ = 'RN-MOVIE';
+  const {ref, focusSelf, focusKey, setFocus} = useFocusable({
+    trackChildren: true,
+    focusKey: focusKey_,
+  });
+
+  useEffect(() => {
+    setFocus(focusKey_);
+  }, [focusSelf, setFocus]);
+
+  const showAlert = (title: string) => {
+    console.log('i am clicked');
+    if (Platform.OS === 'web') {
+      alert(title);
+    } else {
+      Alert.alert('Movie Title', title);
+    }
+  };
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={styles.container}>
-        <View style={styles.otherContainer}>
-          {DATA &&
-            DATA.length > 0 &&
-            DATA.map((el, idx) => {
-              return (
-                <Pressable
-                  style={styles.box}
-                  key={`${idx}`}
-                  onPress={() => Alert.alert(`I am ${el.name}`)}>
-                  <Image style={styles.image} source={el.image} />
-                  <Text style={styles.title}>{el.name}</Text>
-                </Pressable>
-              );
-            })}
-        </View>
+        <FocusContext.Provider value={focusKey}>
+          <View style={styles.otherContainer} ref={ref}>
+            {DATA &&
+              DATA.length > 0 &&
+              DATA.map((el, idx) => {
+                return (
+                  <PressableButton
+                    focusKey={`${el.name}${idx}`}
+                    title={el.name}
+                    source={el.image}
+                    key={idx}
+                    onPress={showAlert}
+                  />
+                );
+              })}
+          </View>
+        </FocusContext.Provider>
       </View>
     </SafeAreaView>
   );
@@ -56,7 +77,9 @@ const styles = StyleSheet.create({
   },
   otherContainer: {
     flexDirection: 'row',
+    backgroundColor: 'white',
   },
+  notFocusedContainer: {backgroundColor: 'yellow', flexDirection: 'row'},
   box: {
     justifyContent: 'center',
     alignItems: 'center',
