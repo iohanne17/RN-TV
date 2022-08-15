@@ -1,31 +1,69 @@
 /* eslint-disable no-alert */
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import {Text, StyleSheet, Image, Platform, Pressable} from 'react-native';
 import {useFocusable} from '@noriginmedia/norigin-spatial-navigation';
 
 interface ButtonProps {
   title: string;
   source: any;
-  onPress?: (t: string) => void;
+  onPress?: (t: number, f: boolean) => void;
   focusKey: string;
+  index: number;
 }
 
 const buttonSize = 150;
 
-const TouchableButton = ({source, title, onPress, focusKey}: ButtonProps) => {
-  const {ref, focused, focusSelf} = useFocusable({focusKey});
+const TouchableButton = ({
+  source,
+  title,
+  onPress,
+  focusKey,
+  index,
+}: ButtonProps) => {
+  const [selectedIndex, setselectedIndex] = useState<undefined | number>(
+    undefined,
+  );
+  const {ref, focused, focusSelf} = useFocusable({
+    focusKey,
+    onBlur: () => setselectedIndex(undefined),
+  });
+
+  const props =
+    Platform.OS === 'web'
+      ? {
+          onPressIn: () => {
+            onPress && onPress(index, focused);
+            if (focused) {
+              setselectedIndex(index);
+            }
+          },
+        }
+      : {
+          onPress: () => {
+            onPress && onPress(index, focused);
+            if (focused) {
+              setselectedIndex(index);
+            }
+          },
+        };
+  const isClicked = focused && index === selectedIndex;
+
   return (
     <Pressable
       ref={ref}
       onFocus={focusSelf}
       style={focused ? styles.buttonFocused : styles.box}
-      onPress={() => onPress && onPress(title)}>
+      {...props}>
       <Fragment>
         <Image
           source={source}
           style={focused ? styles.focusedImage : styles.image}
         />
-        {focused && <Text style={styles.title}>{title}</Text>}
+        {isClicked && (
+          <Text adjustsFontSizeToFit={true} style={styles.title}>
+            {title}
+          </Text>
+        )}
       </Fragment>
     </Pressable>
   );

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {SafeAreaView, View, StyleSheet, Platform, Alert} from 'react-native';
+import {SafeAreaView, View, StyleSheet, Platform} from 'react-native';
 import bladeImg from './assets/blade.jpg';
 import lxgImg from './assets/lxg.jpeg';
 import PressableButton from './src/components/TouchableButton';
@@ -36,16 +36,12 @@ const App = () => {
     setFocus(focusKey_);
   }, [focusSelf, setFocus]);
 
-  const showAlert = (title: string) => {
-    console.log('i am clicked');
-    if (Platform.OS === 'web') {
-      alert(title);
-    } else {
-      Alert.alert('Movie Title', title);
-    }
+  const onClicked = (index: number, focused: boolean) => {
+    console.log('i am clicked', index, focused);
   };
+
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={styles.root}>
       <View style={styles.container}>
         <FocusContext.Provider value={focusKey}>
           <View style={styles.otherContainer} ref={ref}>
@@ -58,7 +54,8 @@ const App = () => {
                     title={el.name}
                     source={el.image}
                     key={idx}
-                    onPress={showAlert}
+                    onPress={onClicked}
+                    index={idx}
                   />
                 );
               })}
@@ -70,6 +67,7 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
+  root: {flex: 1},
   container: {
     flex: 1,
     justifyContent: 'center',
