@@ -1,5 +1,5 @@
 /* eslint-disable no-alert */
-import React, {Fragment, useState} from 'react';
+import React, {Fragment} from 'react';
 import {Text, StyleSheet, Image, Platform, Pressable} from 'react-native';
 import {useFocusable} from '@noriginmedia/norigin-spatial-navigation';
 
@@ -9,6 +9,8 @@ interface ButtonProps {
   onPress?: (t: number, f: boolean) => void;
   focusKey: string;
   index: number;
+  onBlur: () => void;
+  isClicked: boolean;
 }
 
 const buttonSize = 150;
@@ -19,13 +21,12 @@ const TouchableButton = ({
   onPress,
   focusKey,
   index,
+  onBlur,
+  isClicked,
 }: ButtonProps) => {
-  const [selectedIndex, setselectedIndex] = useState<undefined | number>(
-    undefined,
-  );
   const {ref, focused, focusSelf} = useFocusable({
     focusKey,
-    onBlur: () => setselectedIndex(undefined),
+    onBlur: onBlur,
   });
 
   const props =
@@ -33,33 +34,35 @@ const TouchableButton = ({
       ? {
           onPressIn: () => {
             onPress && onPress(index, focused);
-            if (focused) {
-              setselectedIndex(index);
-            }
           },
         }
       : {
           onPress: () => {
             onPress && onPress(index, focused);
-            if (focused) {
-              setselectedIndex(index);
+            if (isClicked) {
+              focusSelf();
             }
           },
         };
-  const isClicked = focused && index === selectedIndex;
+
+  const TVFocus = focused && isClicked;
+  const focusType =
+    Platform.isTV || Platform.OS === 'web' ? TVFocus : isClicked;
+  const borderFocus =
+    Platform.isTV || Platform.OS === 'web' ? focused : isClicked;
 
   return (
     <Pressable
       ref={ref}
       onFocus={focusSelf}
-      style={focused ? styles.buttonFocused : styles.box}
+      style={borderFocus ? styles.buttonFocused : styles.box}
       {...props}>
       <Fragment>
         <Image
           source={source}
-          style={focused ? styles.focusedImage : styles.image}
+          style={borderFocus ? styles.focusedImage : styles.image}
         />
-        {isClicked && (
+        {focusType && (
           <Text adjustsFontSizeToFit={true} style={styles.title}>
             {title}
           </Text>

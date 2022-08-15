@@ -20,6 +20,9 @@
 		47EB63F3390701B2260096C6 /* libPods-TestApp-tvOS-TestApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0216F1136BF7C90703C880F /* libPods-TestApp-tvOS-TestApp-tvOSTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		EE57DEA5314790D63C074D03 /* libPods-TestApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA54FCF2086BA3B4678F8237 /* libPods-TestApp-tvOS.a */; };
+		8BDF8C62A36D433AAD31D766 /* blade.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1BF756A9811A4AEFB314A011 /* blade.jpg */; };
+		8465A96F6EF14CC7B8B6F735 /* index.tsx in Resources */ = {isa = PBXBuildFile; fileRef = AF7769F2570C4788BFF5D8A2 /* index.tsx */; };
+		0F6302EA01174ED0940798E8 /* lxg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5215EC7CCD5F4B69BFBA1B9A /* lxg.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		EA54FCF2086BA3B4678F8237 /* libPods-TestApp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestApp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		1BF756A9811A4AEFB314A011 /* blade.jpg */ = {isa = PBXFileReference; name = "blade.jpg"; path = "../assets/blade.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AF7769F2570C4788BFF5D8A2 /* index.tsx */ = {isa = PBXFileReference; name = "index.tsx"; path = "../assets/index.tsx"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5215EC7CCD5F4B69BFBA1B9A /* lxg.jpeg */ = {isa = PBXFileReference; name = "lxg.jpeg"; path = "../assets/lxg.jpeg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +171,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				9B1644CBAE2FABCCC6E29A69 /* Pods */,
+				605E66FFE3AD4D3590B3B2C2 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -196,6 +203,17 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		605E66FFE3AD4D3590B3B2C2 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				1BF756A9811A4AEFB314A011 /* blade.jpg */,
+				AF7769F2570C4788BFF5D8A2 /* index.tsx */,
+				5215EC7CCD5F4B69BFBA1B9A /* lxg.jpeg */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -343,6 +361,9 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				8BDF8C62A36D433AAD31D766 /* blade.jpg in Resources */,
+				8465A96F6EF14CC7B8B6F735 /* index.tsx in Resources */,
+				0F6302EA01174ED0940798E8 /* lxg.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/blade.jpg",
+      "sha1": "b1d114b7c0dc6db712724d9f04ef84d92fe7dd06"
+    },
+    {
+      "path": "assets/index.tsx",
+      "sha1": "d096c7116eca957a8db8d154807ec27df147becb"
+    },
+    {
+      "path": "assets/lxg.jpeg",
+      "sha1": "c5be00cf51830fbb1e09d512613df0ebd5030011"
+    }
+  ]
+}
