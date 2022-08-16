@@ -39,6 +39,14 @@ Android Device Deployment.
   Run this emulator
 ```
 
+Web Deployment.
+```bash
+  yarn
+```
+```bash
+  yarn web
+```
+
 ## Tech Stack
 
 **Client:** React-Native, Redux-toolkit, Webpack, React-native-web, Typescript, Javascript
